@@ -18,6 +18,7 @@ function handleInput() {
     email: email.value.trim(),
     message: message.value.trim(),
   };
+
   localStorage.setItem('feedback-form-state', JSON.stringify(infoFromInput));
 }
 
@@ -26,6 +27,10 @@ message.addEventListener('input', handleInput);
 
 function handleSubmit(event) {
   event.preventDefault();
+  if (email.value.trim() === '' || message.value.trim() === '') {
+    alert('Elements can not be empty');
+    return;
+  }
   console.log(infoFromInput);
   form.reset();
   localStorage.removeItem('feedback-form-state');
